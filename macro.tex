@@ -1,0 +1,95 @@
+% Naming conventions
+% <fn><m|l><NAME>[Xi+]
+% fn - prefix to distinguish newly-defined commands. Stands for "function"
+% m - stands for "math". Indicates that it is used in the context of a $math expression$.
+% l - stands for "listing"
+% [Xi+] -  used to distinguish number of arguments for same commands which get overriden for number of arguments
+%   For example, Xii stands for 2 arguments
+
+% Alternatives (nodes)
+\newcommand{\fnmalts}{V_{N,1}, V_{N,2},\ldots}
+
+% Aspects (nodes)
+% arg 1 - indentifier of the level the nodes pertain to
+\newcommand{\fnmasps}[1]{V_{#1,1}, V_{#1,2}, \ldots}
+
+% Root node
+\newcommand{\fnmroot}{V_{0,1}}
+
+% Node
+% arg 1 - level
+% arg 2 - id
+\newcommand{\fnmnode}[2]{V_{#1,#2}}
+
+% Assessment in an aspect of a node, vector of weights
+% arg 1 - level, lower
+% arg 2 - level, upper
+% arg 3 - index, upper
+\newcommand{\fnmwaspC}[3]{W_{#1}^{(\fnmnode{#2}{#3})}}
+
+% Assessment in an aspect of a node, vector of weights
+% arg 1 - level
+% arg 2 - node (the aspect)
+\newcommand{\fnmwasp}[2]{W_{#1}^{(#2)}}
+
+% Indexed set of elements
+% arg 1 - elements
+% arg 2 - subscription index
+\newcommand{\fnmsetind}[2]{\{ #1 \}_{#2}}
+
+% Indexed set of elements
+% arg 1 - elements
+% arg 2 - subscription index
+\newcommand{\fnmSetIndEbigg}[2]{\bigg\{ #1 \bigg\}_{#2}}
+
+% Set of weights
+% arg 1 - level for alternatives
+% arg 2 - level for context
+% arg 3 - index for the vertex at level #2
+\newcommand{\fnmSetWaspC}[3]{ \fnmsetind{\fnmwasp{#1}{\fnmnode{#2}{#3}}}{#3 \in L_{#2}}}
+
+% Set of weights
+% arg 1 - level for alternatives
+% arg 2 - level for context
+\newcommand{\fnmSetWasp}[2]{\fnmSetWaspC{#1}{#2}{vert_{#2}}}
+
+% Short for for AHP
+% arg1 - arg. #1 for AHP
+% arg2 - arg. #2 for AHP
+\newcommand{\fnmAhp}[2]{
+    \mathbf{AHP}(#1, #2)
+}
+
+% Range
+% arg 1 - from
+% arg 2 - to
+\newcommand{\fnmrange}[2]{\overline{#1, #2}}
+
+% Call a procedure
+% arg 1 - procedure name
+% arg 2 - arguments
+\newcommand{\fnlCall}[2]{\textsc {#1} \big( #2 \big) }
+
+% Form a set of AHP assessments in higher context for 
+%  the next recursive call
+% arg1 - level, lower
+% arg2 - level, intermediate
+% arg3 - level, upper
+% arg4 - index, intermediate
+% arg5 - index, upper
+\newcommand{\fnmAhpSet}[5] {
+	\fnmSetIndEbigg
+		{\fnlCall
+			{AHP}
+			{\fnmSetWaspC{#1}{#2}{#4}, \fnmwaspC{#2}{#3}{#5}}
+		}
+		{#5 \in L_{#3}}
+}
+
+% Tuple
+\newcommand{\tuple}[1]{\left< #1 \right>}
+
+% Nodes at level
+ %arg 1 - level
+\newcommand{\fnmNodesLvlB}[2]{\fnmsetind{\fnmnode {#1}{#2}}{#2 \in L_{#1}}}
+\newcommand{\fnmNodesLvl}[1]{\fnmNodesLvlB{#1}{vert_{#1}}}
