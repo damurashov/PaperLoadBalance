@@ -1,0 +1,13 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+index.pdf
+img/*.pdf
+*.synctex.gz
+*.aux
+*.bbl
+*.blg
+*.xmp*
+*.out
+*.abs
