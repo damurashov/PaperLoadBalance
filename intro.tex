@@ -1,41 +1,17 @@
-A conteporary approach to simulating complex multi-agent systems relies on the concept of 
-behavior-based systems (BBS) \cite{mataric-1992}. The core of the concept is the idea that an 
-intelligent behavior of a group is an emergent phenomenon of multiple interactions of agents with 
-one another and an environment they exist in, along with capability of those to generalize an 
-experience. It implies that agents have a memory and cognitive capabilities of some 
+The problem of load balancing in organizing a distributed network is often approached with heuristics-based solutions.
+It originates naturally from the complexity of such systems, the degree to which different technologies are intervowen
+into the system in its final form.
+
+The situation gets even more complicated when there is a necessity to accomodate different algorithms of load balancing
+that solve the task of designating operations onto physical nodes, and even more so when one encounters the need to
+use multiple algorithms at once
+
+
+
+
+A conteporary approach to simulating complex multi-agent systems relies on the concept of
+behavior-based systems (BBS) \cite{mataric-1992}. The core of the concept is the idea that an
+intelligent behavior of a group is an emergent phenomenon of multiple interactions of agents with
+one another and an environment they exist in, along with capability of those to generalize an
+experience. It implies that agents have a memory and cognitive capabilities of some
 sort. This approach enables one to model a wide spectrum of systems including complex ones.
-
-Some modern agent-based modeling automation software (ABMAS) offer facitlities to incorporate 
-feedback loops through which an agent would get updated on changes in the environment. However, neither this, nor other modelling environments provide necessary 
-facilities for modeling more complex aspects of agent interactions such as making inferences from 
-experience and applying those inferences' results to a reasoning process.
-
-Simulation software lag the concept of BBS, and among multiple shapes of forms of multi-agent 
-systems that reside within the, gap we highlight those with a coordinator. By mentioning the 
-"coordinator", we imply some entity (probably, a special class of agent) that establishes high-level 
-strategic goals for another agents from the group that is subjected to the coordinator's control. 
-Simulations like that may model real-life complex systems such as organizational or social ones. In 
-systems of that complexity, "agents" are bound to perform within the confinemets of some goal they 
-try to achieve, but at the same time they are free to act as they see fit on a lower scale. The 
-ultimate objective notwithstanding, they apply their own knowledge, reason, and situation awareness. 
-The deviations from the strategy may be so substantial, so an agent's actions may seem to contradict 
-the strategy itself while serving it in a way that is the best from the tactical standpoint. The 
-reason is that no general directive can comprehend the entirety of a complex system, all its 
-peculiarly intertwined components, multiple networks agents may form while performing tasks assigned 
-to them, and many other aspects.
-
-In this paper, we propose a practical approach to modeling the process of a group coordination based 
-on using weighted preference graph and AHP algorithm \cite{saaty1990decision}. The approach may be 
-implemented as a framework, or extension plugin to some ABMAS.
-
-We have to stipulate that the idea to use AHP algorithm to model decision making in a 
-multi-agent system is nothing new by this time \cite{cartvehishvili2018model, 
-drakaki2018intelligent}, neither is dynamic changing of the preference graph's weights to  alter 
-the behavior of agents \cite{zytniewski2016application, brintrup2010behaviour}. But first and foremost, 
-in order to model group coordination, we offer to exploit the \textit{structure} of a preference 
-hierarchy graph. Changes in its higher levels which we interpret as setting a strategic objective 
-influences the entire decision making process, and we use that property for translating strategic 
-objectives into smaller-scale tactical goals. Second, for modeling group coordination, we offer to 
-use shared editing of the graph. To our best knowledge, those two features are unique, and therefore 
-constitute novelty of our approach.
-
